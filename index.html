@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lokie's Libary</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"defer></script>
+</head>
+<body>
+    <header class="header">
+        <H1>Welcome to Lokie's Libary</H1>
+    </header>
+    <main >
+        <h1>Add books to library</h1>
+        <dialog id="bookInfo">
+            <form method="dialog">
+                <p>
+                    
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title">
+                    <label for="author">Author:</label>
+                    <input type="text" name="author" id="author">
+                    <label for="pages">#of pages:</label>
+                    <input type="number" name="pages" id="pages">
+                    <label for="read"> Have you read it?</label>
+                    <input type="checkbox" name="read" id="read">
+                </p>
+                <div>
+                    <button id="cancel" type="reset">Cancel</button>
+                    <button id="submit" type="submit"> Confirm</button>
+                </div>
+            </form>
+        </dialog>
+        <button class="addBook"> Add Book</button>
+        <div class="bookContainer">
+        <div class="books"></div>
+        </div>
+    </main>
+    <footer class="footer">
+        <h4>© Brent-The-Carpenter</h4>
+    </footer>
+</body>
+</html>
