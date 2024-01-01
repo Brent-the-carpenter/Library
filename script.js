@@ -25,8 +25,7 @@ function addBooktoLibrary (title, author , pages , read){
            for (let i = 0 ; i < bookCard.length; i++){
             bookCard[i].remove();
            }
-
-
+           let index = 0;
             myLibrary.forEach((book)=>{
               
                 const bookCard = document.createElement('div');
@@ -37,7 +36,7 @@ function addBooktoLibrary (title, author , pages , read){
                     bookAuthor.classList.add('bookAuthor')
                 const bookPages = document.createElement('div');
                     bookPages.classList.add('bookPages');
-                let bookRead = document.createElement('button')
+                const bookRead = document.createElement('button')
                     bookRead.classList.add('bookRead');
                 const bookRemove = document.createElement('button')
                     bookRemove.classList.add('bookRemove');
@@ -46,9 +45,11 @@ function addBooktoLibrary (title, author , pages , read){
                     bookAuthor.textContent = `Author: ${book.author}`;
                     bookPages.textContent = `Number of pages: ${book.pages}`;
                     bookRemove.textContent = 'Remove';
+                    bookRemove.dataset.linkedArray = index;
+                    bookRead.dataset.linkedArray= index;
+                    index++;
                     
-
-                         if (book.read = true){
+                         if (book.read === true){
                             bookRead.textContent = 'Read';
                             bookRead.style.backgroundColor =  'green'
                          }else {
@@ -66,7 +67,10 @@ function addBooktoLibrary (title, author , pages , read){
                             }
                          })
                          bookRemove.addEventListener('click',()=>{
-                            books.remove(bookCard);
+                            let verfifyBookToRemove = bookRemove.dataset.linkedArray;
+                            myLibrary.splice(parseInt(verfifyBookToRemove), 1);
+                            bookCard.remove();
+                            addBookToPage();
                          })
                     
                     bookCard.appendChild(bookTitle);
@@ -81,11 +85,6 @@ function addBooktoLibrary (title, author , pages , read){
          };
     addBookToPage();
 }
-
-
-//new Book('Harry Potter - Philosopher\'s stone', 'J.K. Rowling' , 309 , 'read')
-
-// addBooktoLibrary('Harry Potter - Philosopher\'s stone', 'J.K. Rowling' , 309 , 'read')
 
 const addBookButton = document.querySelector('.addBook');
 const cancelButton = document.querySelector('#cancel');
@@ -115,7 +114,8 @@ submitButton.addEventListener('click',()=>{
     let title = document.querySelector('#title').value;
     let author = document.querySelector('#author').value;
     let pages = document.querySelector('#pages').value;
-    let read = document.querySelector('#read').value;
+    let read = document.querySelector('#read').checked;
+    console.log(read.value)
         addBooktoLibrary(title, author, pages,read);
     document.querySelector('#form').reset()
 
