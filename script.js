@@ -51,19 +51,21 @@ function addBooktoLibrary (title, author , pages , read){
                     
                          if (book.read === true){
                             bookRead.textContent = 'Read';
-                            bookRead.style.backgroundColor =  'green'
+                            bookRead.style.backgroundColor =  '#00AB66'
                          }else {
                             bookRead.textContent = 'Have not read';
                             bookRead.style.backgroundColor = 'rgba(236, 63, 63, .6)';   
                          };
 
                          bookRead.addEventListener('click', ()=>{
-                            if (bookRead.textContent === 'Read'){
+                            if (book.read === true){
+                                book.read = false
                                 bookRead.textContent = 'Have not read';
                             bookRead.style.backgroundColor = 'rgba(236, 63, 63, .6)';  
                             }else{
+                                book.read = true;
                                 bookRead.textContent = 'Read';
-                                bookRead.style.backgroundColor =  'green'
+                                bookRead.style.backgroundColor =  '#00AB66'
                             }
                          })
                          bookRemove.addEventListener('click',()=>{
@@ -115,9 +117,14 @@ submitButton.addEventListener('click',()=>{
     let author = document.querySelector('#author').value;
     let pages = document.querySelector('#pages').value;
     let read = document.querySelector('#read').checked;
+    if (title === ''||(author === '')||(pages === '') ){
+        alert('missing info');
+    } else{
     console.log(read.value)
         addBooktoLibrary(title, author, pages,read);
+        dialog.close()
     document.querySelector('#form').reset()
+    };
 
 });
 

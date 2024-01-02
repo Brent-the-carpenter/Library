@@ -12,6 +12,7 @@ body{
     display: grid;
     grid-template-rows: 1fr 20fr 1fr;
     background-color: rgba(128,128,128, .7);
+    font-family:'Times New Roman', Times, serif;
     
 }
 .header{
@@ -19,50 +20,85 @@ body{
     grid-column: 1/3;
     justify-items:center ;
     color: white;
+    font-weight: 900;
     background-color: rgba(0, 0, 0, .8);
+    text-align: center;
+    padding-top: 10px;
 }
 main{
     display: grid;
     grid-row: 2/3;
     width: 100vw;
-    grid-template-rows: 50px 100px 1fr ;
+    grid-template-rows: .1fr .5fr 1fr ;
     grid-template-columns: 1fr .5fr 1fr;
+    background-image: linear-gradient(#304352,#d7d2cc);
 }
 main h1{
-    grid-column: 2/3;
+    grid-column: 1/4;
     grid-row: 1/2;
-}
-main button{
-    grid-column: 2/3;
-    grid-row: 2/3;
-    width: 150px;
-    height: 50px;
     justify-self: center;
+    color:white;
+}
+main .addBook{
+    grid-column: 1/4;
+    grid-row: 2/3;
+    width: 100px;
+    height: 35px;
+    justify-self: center;
+    border-style: none;
+    border-radius: 5px;
+    background-color:#87838E ;
+    align-content: start;
+}
+ button:hover{
+    transform: scale(1.2);
 }
 dialog{
-   top: 40%;
-   left: 40%;
+  margin: auto auto;
    height: 300px;
    width: 500px;
+   border-style: none;
+   font-size: 1.1rem;
+   background-color: rgba(255, 255, 255,1);
+}
+#bookInfo:hover{
+    transform: scale(1.1);
 }
 #bookInfo form{
-    height: a;
+    width: auto;
+    height: 200px;
     display: grid;
     grid-template-rows: 2fr 1fr;
-    gap: 100px;
+    gap: 50px;
     padding: 20px;
+    
 }
 form p{
     display: grid;
-    grid-template-columns: .3fr 1fr;
+    grid-template-columns: .3fr .5fr;
     grid-template-rows: 1fr 1fr 1fr;
-    row-gap: 10px;
+    row-gap: 30px;
+    
+}
+input:invalid{
+    border: 2px solid rgba(236, 63, 63, .6);
 }
 form div{
-    display: flex;
-    justify-content: space-between;
-   
+    display: grid;
+    grid-auto-flow: column;
+    gap: 50px;
+   justify-items: center;
 }
+
+form #submit , form #cancel{
+    width: 7rem;
+    height: 2rem;
+    border-style: solid;
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 5px;
+}
+
+
 .bookContainer{
     grid-column: 1/4;
     grid-row: 3/4;
@@ -70,8 +106,10 @@ form div{
 }
 .books{
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, .3fr));
     justify-items: start;
    padding: 30px;
+   gap: 16px;
 }
 .bookCard{
     display: grid;
@@ -113,15 +151,16 @@ form div{
     background-color: rgba(236, 63, 63, 0.6);  
 }
 .bookRemove{
+    grid-column: 2/3;
     grid-row: 4/5;
     width: 75px;
     width: 100px;
     height: 40px;
     border-radius: 5px;
     border-style: none;
-    background-color: rgb(175, 175, 173);
+    background-color:#87838E;
 }
-.bookRemove:hover{
+.bookRemove:hover , .bookRead:hover{
     transform: scale(1.1);
 }
 .footer{
