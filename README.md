@@ -1,2 +1,2 @@
 # Library
-This is my Odin project Library!s
+This is my version of the Odin project Library!
