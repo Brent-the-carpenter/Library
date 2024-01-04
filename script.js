@@ -119,8 +119,9 @@ submitButton.addEventListener('click',()=>{
     let read = document.querySelector('#read').checked;
     if (title === ''||(author === '')||(pages === '') ){
         alert('missing info');
-    } else if (pages < 0){
-        return
+    } else if (pages < 0 || (title.length < 4) || ((author < 4) || (allLetter(author) === false ))) {
+      return;
+        
     }
      else{
     console.log(read.value)
@@ -132,6 +133,18 @@ submitButton.addEventListener('click',()=>{
 });
 
 
-
+function allLetter(inputtxt)
+  {
+   var letters = /^[A-Za-z]+$/;
+   if(inputtxt.match(letters))
+     {
+      return true;
+     }
+   else
+     {
+     alert("Author can only contain characters from alphabet.");
+     return false;
+     }
+  }
 
 
