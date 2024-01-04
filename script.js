@@ -119,7 +119,10 @@ submitButton.addEventListener('click',()=>{
     let read = document.querySelector('#read').checked;
     if (title === ''||(author === '')||(pages === '') ){
         alert('missing info');
-    } else{
+    } else if (pages < 0){
+        return
+    }
+     else{
     console.log(read.value)
         addBooktoLibrary(title, author, pages,read);
         dialog.close()
