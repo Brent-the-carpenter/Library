@@ -2,22 +2,23 @@
 
 const myLibrary = [];
 
-function Book(title , author , pages , read){
+class Book{
+    constructor(title , author , pages, read){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info =function(){
+    this.info = ()=> {
         return (title +' by '+author+' , '+ pages + ' ' + read)
-    }
-}
+    }};
 
-function addBooktoLibrary (title, author , pages , read){
-    let book = new Book(title, author, pages, read);
+
+addBooktoLibrary (){
+    
   
-    myLibrary.push(book);
-        
-        function addBookToPage(){
+    myLibrary.push(this);
+}    
+        get addBookToPage(){
             let books = document.querySelector('.books')
 
             //removes bookcards before making new ones for whole library
@@ -85,9 +86,10 @@ function addBooktoLibrary (title, author , pages , read){
             });
                   
          };
-    addBookToPage();
+   
 }
-
+ 
+(function (){
 const addBookButton = document.querySelector('.addBook');
 const cancelButton = document.querySelector('#cancel');
 const submitButton = document.querySelector('#submit');
@@ -125,7 +127,9 @@ submitButton.addEventListener('click',()=>{
     }
      else{
     console.log(read.value)
-        addBooktoLibrary(title, author, pages,read);
+        let newBook = new Book(title,author,pages,read)
+        newBook.addBooktoLibrary(title, author, pages,read);
+        newBook.addBookToPage;
         dialog.close()
     document.querySelector('#form').reset()
     };
@@ -135,7 +139,7 @@ submitButton.addEventListener('click',()=>{
 
 function allLetter(inputtxt)
   {
-   var letters = /^[A-Za-z]+$/;
+   var letters = /^[a-zA-Z\s]*$/;
    if(inputtxt.match(letters))
      {
       return true;
@@ -146,5 +150,7 @@ function allLetter(inputtxt)
      return false;
      }
   }
+})();
+
 
 
